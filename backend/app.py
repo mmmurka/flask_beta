@@ -4,7 +4,6 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from flask_migrate import Migrate
 
-
 template_dir = os.path.abspath('/Users/mmmurka/Desktop/Flask/Flask_beta/templates')
 app = Flask(__name__, template_folder=template_dir)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://mmmurka:12341@localhost/flask_beta?sslmode=disable'
@@ -24,12 +23,10 @@ class Article(db.Model):
         return '<Article %r>' % self.id
 
 
-
 @app.route('/')
 @app.route('/home')
 def index():
     return render_template("index.html")
-
 
 
 @app.route('/posts')
@@ -75,9 +72,6 @@ def post_update(id):
         return render_template("post_update.html", article=article)
 
 
-
-
-
 @app.route('/create-article', methods=['POST', 'GET'])
 def create_article():
     if request.method == 'POST':
@@ -97,20 +91,14 @@ def create_article():
         return render_template("create-article.html")
 
 
-
 @app.route('/sign-up', methods=['POST', 'GET'])
 def sign_up():
     return render_template("sign_up.html")
 
 
-
 @app.route('/sign-in', methods=['POST', 'GET'])
 def sign_in():
     return render_template("sign-in.html")
-
-
-
-
 
 
 if __name__ == "__main__":
